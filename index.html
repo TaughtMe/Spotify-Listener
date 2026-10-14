@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#121212">
+  <title>Hörbuch-Merker</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Hörbuch-Merker</h1>
+    <button id="settingsBtn" class="icon-btn" aria-label="Einstellungen">⚙</button>
+  </header>
+
+  <main>
+    <section id="nowPlaying" hidden></section>
+    <section id="books"></section>
+    <p id="empty" class="muted" hidden>
+      Noch keine Hörbücher gespeichert. Starte in Spotify ein Hörbuch und lass diese App geöffnet –
+      sie erkennt es und fragt, ob sie es merken soll.
+    </p>
+  </main>
+
+  <dialog id="settings">
+    <form method="dialog">
+      <h2>Einstellungen</h2>
+
+      <label>Spotify Client-ID
+        <input id="clientId" autocomplete="off" spellcheck="false" placeholder="z. B. 3f9a…">
+      </label>
+
+      <label>Redirect-URI (im Spotify Dashboard eintragen)
+        <input id="redirectUri" readonly>
+      </label>
+
+      <label>Schlagwörter für Hörbuch-Erkennung (kommagetrennt)
+        <textarea id="keywords" rows="3" spellcheck="false"></textarea>
+      </label>
+
+      <p id="authState" class="muted"></p>
+
+      <div class="row">
+        <button type="button" id="saveBtn" class="primary">Speichern &amp; bei Spotify anmelden</button>
+        <button type="button" id="logoutBtn">Abmelden</button>
+        <button value="cancel">Schließen</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" role="status" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
